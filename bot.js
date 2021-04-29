@@ -7,7 +7,7 @@ const bot = new TelegramBot(token, { polling: true })
 bot.on('message', (msg) => {
     let chat_id = msg.chat.id;
     let message_id = msg.message_id;
-    if (msg.text== 'iphone' || msg.text == 'dilepaskan' || msg.text == '64gb') {
+    if (msg.text.toLowerCase() == 'iphone' || msg.text.toLowerCase() == 'dilepaskan' || msg.text.toLowerCase() == '64gb') {
       bot.deleteMessage(chat_id, message_id);
     }
   })
