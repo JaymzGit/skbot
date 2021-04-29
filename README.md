@@ -12,7 +12,6 @@ This bot uses Python as it's programming language
 
 **To-Do** :
 - [ ] Bot should be able to read a text file for blacklisted words
-- [ ] A better coding alternative to the current code for filtering messages.
 
 **This project was also a colaboration between** :
 1. Jaymz (myself)
