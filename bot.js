@@ -5,18 +5,13 @@ const token = 'TOKEN'
 const bot = new TelegramBot(token, { polling: true })
 
 bot.on('message', (msg) => {
-    const chatId = msg.chat.id
-    if (msg.text.toLowerCase() == 'iphone' || msg.text.toLowerCase() == 'dilepaskan' 
-    || msg.text.toLowerCase() == '64gb' || msg.text.toLowerCase() == 'iphone') {
-      bot.deleteMessage(chatId)
+    let chat_id = msg.chat.id;
+    let message_id = msg.message_id;
+    if (msg.text== 'iphone' || msg.text == 'dilepaskan' || msg.text == '64gb') {
+      bot.deleteMessage(chat_id, message_id);
     }
   })
 
-
-  const express = require('express');
-  const app = express();
-  const port = 3000;
+app.get('/', (req, res) => res.send('Bot is running!'));
   
-  app.get('/', (req, res) => res.send('Hello World!'));
-  
-  app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
