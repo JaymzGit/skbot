@@ -4,10 +4,14 @@ const token = 'TOKEN'
 
 const bot = new TelegramBot(token, { polling: true })
 
+const express = require('express');
+const app = express();
+const port = 3000;
+
 bot.on('message', (msg) => {
     let chat_id = msg.chat.id;
     let message_id = msg.message_id;
-    if (msg.text.toLowerCase() == 'iphone' || msg.text.toLowerCase() == 'dilepaskan' || msg.text.toLowerCase() == '64gb') {
+    if (msg.text.toLowerCase().includes('iphone') || msg.text.toLowerCase().includes('dilepaskan') || msg.text.toLowerCase().includes('64gb')) {
       bot.deleteMessage(chat_id, message_id);
     }
   })
