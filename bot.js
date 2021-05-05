@@ -12,7 +12,7 @@ bot.on('message', (msg) => {
     let chat_id = msg.chat.id;
     let message_id = msg.message_id;
     if (msg.text.toLowerCase().includes('dilepaskan') || msg.text.toLowerCase().includes('ansuran') || 
-    msg.text.toLowerCase().includes('myset') ||msg.text.toLowerCase().includes('64gb')) {
+    msg.text.toLowerCase().includes('myset') ||msg.text.toLowerCase().includes('64gb') || msg.text.toLowerCase().includes('mentraktirmu'))  {
       bot.deleteMessage(chat_id, message_id);
     }
   })
