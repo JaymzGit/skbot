@@ -5,7 +5,9 @@ This bot was orginally designed specifically for Sains Komputer SPM telegram gro
 
 (**Bot Website**) : https://skbot.jaymzcs.repl.co
 (**Telegram Group**) : https://t.me/SainsKomputerSPM2021
-This bot uses Python as it's programming language
+
+
+This bot uses JavaScript with Node.js module as it's programming language
 
 **Features** :
 - [x] Able to filter messages for keywords and deletes the message upon filter 
