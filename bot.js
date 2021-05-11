@@ -37,7 +37,7 @@ bot.onText(/\/add (.+)/, (msg, match) => {
             let arr = readf();
             //Remove the command and send a varification message
             bot.deleteMessage(chat_id, message_id);
-            bot.sendMessage(chat_id,'added');
+            bot.sendMessage(chat_id,'Successfully added word to blacklist.');
 		}else{
             bot.deleteMessage(chat_id, message_id);
 			bot.sendMessage(message.chat.id, "You are not Admin");
@@ -55,7 +55,7 @@ bot.on('message', (msg) => {
   for (let i = 0; i < arrayLength; i++) {
 	//Scan for blacklisted words in messages
     if (msg.text.toLowerCase().includes(arr[i])) {
-        console.log(arr[i]);
+        console.log("Message containing '" + arr[i] + "' was deleted.'");
         bot.deleteMessage(chat_id, message_id);
         break;
     }
