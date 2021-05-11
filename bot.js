@@ -1,11 +1,11 @@
 //Import required modules
 const fs =  require('fs');
-var readline = require('readline');
+const readline = require('readline');
 const TelegramBot = require('node-telegram-bot-api')
 
 //Insert token here
-const token = '';
-
+const token = 'TOKEN';
+//Connect to Telegram servers(add proxy if you are in restricted countries like russia or iran or use System-wide proxy/VPN)
 const bot = new TelegramBot(token, {polling: true});
 
 //Connect bot with web
@@ -21,17 +21,20 @@ function readf(){
 
 //Responds to command "/add <word>"
 bot.onText(/\/add (.+)/, (msg, match) => {
-    const chat_id = msg.chat.id;
+    let chat_id = msg.chat.id;
     let message_id = msg.message_id;
+    //Checks and see if the message sender had adminstarator permissions in the group
     bot.getChatMember(msg.chat.id, msg.from.id).then(function(data) {
 		if ((data.status == "creator") || (data.status == "administrator")){
             const newword = match[1];
             
-	    //Append the file (add to the last row)
+	    //Append word to last line of the the file
             fs.appendFile('blacklist.txt', '\r\n'+newword, function (err) {
                 if (err) throw err;
               });
+            //Reads the Blacklist into arr again
             let arr = readf();
+            //Remove the command and send a varification message
             bot.deleteMessage(chat_id, message_id);
             bot.sendMessage(chat_id,'added');
 		}else{
@@ -43,12 +46,13 @@ bot.onText(/\/add (.+)/, (msg, match) => {
 
 
 bot.on('message', (msg) => {
+  //Loads blacklist.txt words into arr
   let arr = readf();
   let chat_id = msg.chat.id;
   let message_id = msg.message_id;
-  var arrayLength = arr.length;
-  for (var i = 0; i < arrayLength; i++) {
-	//Read the blacklist.txt files and scan for blacklisted words in messages
+  let arrayLength = arr.length;
+  for (let i = 0; i < arrayLength; i++) {
+	//Scan for blacklisted words in messages
     if (msg.text.toLowerCase().includes(arr[i])) {
         console.log(arr[i]);
         bot.deleteMessage(chat_id, message_id);
@@ -58,6 +62,7 @@ bot.on('message', (msg) => {
 }
 )
 
+//Return html respond
 app.get('/', (req, res) => res.send('sk bot is online'));
   
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
