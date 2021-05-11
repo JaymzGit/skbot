@@ -1,4 +1,5 @@
 //Import required modules
+require('dotenv').config();
 const fs =  require('fs');
 const readline = require('readline');
 const TelegramBot = require('node-telegram-bot-api')
