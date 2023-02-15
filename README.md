@@ -17,4 +17,4 @@ This bot uses JavaScript with Node.js module as it's programming language
 1. Jaymz (myself)
 2. SottaByte98
 
-> Copyright © 2021 JaymzGit
+> Copyright © 2021 - 2023 JaymzGit
