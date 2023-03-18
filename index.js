@@ -5,7 +5,7 @@ const readline = require('readline');
 const TelegramBot = require('node-telegram-bot-api')
 
 //Insert token here
-const token = '1774639882:AAGj5SDRK_GNG2gCym3YSSpGV7Z_9ib3yVM';
+const token = 'insert token here';
 //Connect to Telegram servers(add proxy if you are in restricted countries like russia or iran or use System-wide proxy/VPN)
 const bot = new TelegramBot(token, {polling: true});
 
@@ -26,7 +26,7 @@ bot.onText(/\/add (.+)/, (msg, match) => {
     let message_id = msg.message_id;
     //Checks and see if the message sender had adminstarator permissions in the group
     bot.getChatMember(msg.chat.id, msg.from.id).then(function(data) {
-		if ((data.status == "creator") || (data.status == "administrator")){
+		if ((data.status == "admin")) {
             const newword = match[1];
             
 	    //Append word to last line of the the file
